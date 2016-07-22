@@ -1,23 +1,25 @@
 package dwbook.phonebook;
 
+import io.dropwizard.setup.Bootstrap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
-import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class App extends Application<Configuration> {
+public class App extends Application<PhonebookConfiguration> {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     @Override
-    public void initialize(Bootstrap<Configuration> b) {}
+    public void initialize(Bootstrap<PhonebookConfiguration> b) {}
 
     @Override
-    public void run(Configuration c, Environment e) throws Exception {
+    public void run(PhonebookConfiguration c, Environment e) throws Exception {
         LOGGER.info("Method App#run() called");
-        System.out.println("Hello world, by Dropwizard!");
+        for (int i=0; i < c.getMessageRepetitions(); i++) {
+            System.out.println(c.getMessage());
+        }
     }
 
     public static void main(String[] args) throws Exception {
