@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.dropwizard.Application;
-import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
 
 public class App extends Application<PhonebookConfiguration> {
