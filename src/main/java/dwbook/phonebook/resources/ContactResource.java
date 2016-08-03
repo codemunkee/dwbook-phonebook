@@ -16,8 +16,8 @@ public class ContactResource {
     }
 
     @POST
-    public Response createContact(
-        @FormParam("name") String name, @FormParam("phone") String phone) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createContact(Contact contact) {
         return Response.created(null).build();
     }
 
@@ -31,11 +31,8 @@ public class ContactResource {
     @PUT
     @Path("/{id}")
     public Response updateContact(
-            @PathParam("id") int id,
-            @FormParam("firstName") String firstName,
-            @FormParam("lastName") String lastName,
-            @FormParam("phone") String phone) {
+            @PathParam("id") int id, Contact contact) {
         // update teh contact with the provided ID
-        return Response.ok(new Contact(id, firstName, lastName, phone)).build();
+        return Response.ok(new Contact(id, contact.getFirstName(), contact.getLastName(), contact.getPhone())).build();
     }
 }
